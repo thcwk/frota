@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Frota</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                light: '#60a5fa', // Tailwind blue-400 (Cobli-inspired)
+                DEFAULT: '#3b82f6', // Tailwind blue-500
+                dark: '#2563eb',  // Tailwind blue-600
+              },
+              // Light theme
+              light_bg: '#f3f4f6', // Tailwind gray-100
+              light_surface: '#ffffff', // white
+              light_text_primary: '#1f2937', // Tailwind gray-800
+              light_text_secondary: '#6b7280', // Tailwind gray-500
+
+              // Dark theme (X-inspired with Cobli professionalism)
+              dark_bg: '#0f172a', // Tailwind slate-900 (Deeper than gray-900)
+              dark_surface: '#1e293b', // Tailwind slate-800
+              dark_text_primary: '#f1f5f9', // Tailwind slate-100
+              dark_text_secondary: '#94a3b8', // Tailwind slate-400
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    /* Global scrollbar styling for a more modern look */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent; /* Or use a dark_bg variant */
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #4b5563; /* gray-600 */
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3b82f6; /* primary */
+    }
+    /* LoginPage Animations (Moved from App.tsx) */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    .animate-slide-up-fade-in { animation: slideUpFadeIn 0.5s ease-out forwards; }
+
+    /* Modal Animation (Moved from ui_components.tsx) */
+    @keyframes modal-appear {
+      0% { opacity: 0; transform: scale(0.95) translateY(-10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .animate-modal-appear { animation: modal-appear 0.3s ease-out forwards; }
+
+    /* General App Animations */
+    @keyframes gentleSlideUp { from { opacity:0; transform: translateY(5px); } to { opacity:1; transform: translateY(0); } }
+    .animate-gentle-slide-up { animation: gentleSlideUp 0.3s ease-out forwards; }
+
+    /* Tire Dragging visual cue */
+    .dragging-tire {
+        opacity: 0.7;
+        border: 2px dashed #3b82f6; /* primary color */
+        transform: scale(1.05);
+    }
+    .drag-over-active {
+        outline: 2px dashed #3b82f6; /* primary color */
+        background-color: rgba(59, 130, 246, 0.1); /* primary color with alpha */
+        transform: scale(1.02);
+        box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.1",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "firebase/": "https://esm.sh/firebase@^11.8.1/",
+    "xlsx": "https://esm.sh/xlsx@0.18.5",
+    "@/pages": "/pages.tsx",
+    "@/App": "/App.tsx",
+    "@/constants": "/constants.tsx",
+    "@/ui_components": "/ui_components.tsx",
+    "@/types": "/types.ts",
+    "@/firebase": "/firebase.tsx",
+    "@firebase/app": "https://esm.sh/@firebase/app@^0.13.0",
+    "@firebase/firestore": "https://esm.sh/@firebase/firestore@^4.7.16",
+    "@firebase/auth": "https://esm.sh/@firebase/auth@^1.10.6"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="antialiased bg-light_bg dark:bg-dark_bg text-light_text_primary dark:text-dark_text_primary">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
